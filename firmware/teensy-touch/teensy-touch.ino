@@ -50,6 +50,7 @@ Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 #define THRESHOLD 2000
 #define NBUTTON 11
+#define NULL_VALUE -1
 
 void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3C (for the 128x32)
@@ -76,7 +77,7 @@ void loop() {
   */
   int reading = 0;
   int val = 0;
-  int disp_sample = -1;
+  int disp_sample = NULL_VALUE;
   String label;
 
   int sample[NBUTTON];
@@ -89,11 +90,21 @@ void loop() {
                             1,       3,       4
                          };
 
+  // TODO: support simultaneous button presses
   for (int i = 0; i < NBUTTON; i++) {
-    sample[i] = touchRead(pin[i]);
-  }
 
-  for (int i = 0; i < NBUTTON; i++) {
+    sample[i] = touchRead(pin[i]);
+
+    /*
+        NOTE: only one pressed button
+        will "win" for each iteration
+        of loop(). Thus "multi-touch"
+        is not supported.
+    */
+    if (sample[i] > THRESHOLD) {
+      disp_sample = i;
+    }
+
     Serial.print(i);
     Serial.print("\t");
     Serial.print(sample[i]);
@@ -101,18 +112,13 @@ void loop() {
     Serial.print(pin[i] );
     Serial.print("\t");
     Serial.print(desc[i] );
+    Serial.print("\t");
+    Serial.print( disp_sample );
     Serial.println();
   }
 
-
-  for (int i = 0; i < NBUTTON; i++) {
-    if (sample[i] > THRESHOLD) {
-      disp_sample = i;
-    }
-  }
-
   display.clearDisplay();
-  if (disp_sample > 0) {
+  if (disp_sample > -1) {
     display.setCursor(0, 0);
     display.setTextColor(WHITE);
 
