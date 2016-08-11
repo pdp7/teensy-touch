@@ -49,6 +49,7 @@
 Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 #define THRESHOLD 2000
+#define NBUTTON 11
 
 void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3C (for the 128x32)
@@ -75,81 +76,57 @@ void loop() {
   */
   int reading = 0;
   int val = 0;
+  int disp_sample = -1;
   String label;
 
-  reading = touchRead(A1);
-  if (reading > THRESHOLD) {
-    label = "CAP15 [A1]";
-    val = reading;
+  int sample[NBUTTON];
+  String desc[NBUTTON] = { "CAP15", "CAP16", "CAP17", "CAP18",
+                           "CAP19", "CAP22", "CAP23", "CAP0",
+                           "CAP1",  "CAP3",  "CAP4"
+                         };
+  int pin[NBUTTON] =     {  A1,      A2,      A3,      A4,
+                            A5,      A8,      A9,       0,
+                            1,       3,       4
+                         };
+
+  for (int i = 0; i < NBUTTON; i++) {
+    sample[i] = touchRead(pin[i]);
   }
 
-  reading = touchRead(A2);
-  if (reading > THRESHOLD) {
-    label = "CAP16 [A2]";
-    val = reading;
+  for (int i = 0; i < NBUTTON; i++) {
+    Serial.print(i);
+    Serial.print("\t");
+    Serial.print(sample[i]);
+    Serial.print("\t");
+    Serial.print(pin[i] );
+    Serial.print("\t");
+    Serial.print(desc[i] );
+    Serial.println();
   }
 
-  reading = touchRead(A3);
-  if (reading > THRESHOLD) {
-    label = "CAP17 [A3]";
-    val = reading;
-  }
 
-  reading = touchRead(A4);
-  if (reading > THRESHOLD) {
-    label = "CAP18 [A4]";
-    val = reading;
-  }
-
-  reading = touchRead(A5);
-  if (reading > THRESHOLD) {
-    label = "CAP19 [A5]";
-    val = reading;
-  }
-
-  reading = touchRead(A8);
-  if (reading > THRESHOLD) {
-    label = "CAP22 [A8]";
-    val = reading;
-  }
-
-  reading = touchRead(A9);
-  if (reading > THRESHOLD) {
-    label = "CAP23 [A9]";
-    val = reading;
-  }
-
-  reading = touchRead(0);
-  if (reading > THRESHOLD) {
-    label = "CAP0";
-    val = reading;
-  }
-
-  reading = touchRead(1);
-  if (reading > THRESHOLD) {
-    label = "CAP1";
-    val = reading;
-  }
-
-  reading = touchRead(3);
-  if (reading > THRESHOLD) {
-    label = "CAP3";
-    val = reading;
-  }
-
-  reading = touchRead(4);
-  if (reading > THRESHOLD) {
-    label = "CAP4";
-    val = reading;
+  for (int i = 0; i < NBUTTON; i++) {
+    if (sample[i] > THRESHOLD) {
+      disp_sample = i;
+    }
   }
 
   display.clearDisplay();
-  if (val > THRESHOLD) {
+  if (disp_sample > 0) {
     display.setCursor(0, 0);
-    display.setTextSize(2);
     display.setTextColor(WHITE);
-    display.println(label);
-    display.println(val);
+
+    display.setTextSize(2);
+    display.println("pressed:");
+
+    display.setTextSize(3);
+    display.print("<");
+    display.print(desc[disp_sample]);
+    display.println(">");
+
+    display.setTextSize(2);
+    display.print("value:");
+    display.println(sample[disp_sample]);
   }
   display.display();
   delay(100);
