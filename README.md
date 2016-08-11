@@ -1,6 +1,17 @@
 # Teensy LC capactive touch button demo board
 Capactive touch button demo board for Teensy LC with Adafruit 128x64 OLED (SPI)
 
+## Shared Project
+* This is what was ordered and tested
+* URL: https://oshpark.com/shared_projects/J02KZSsn
+* Project Name: Teensy LC with OLED & Touch [f37453f]
+* File: teensybig-oled.kicad_pcb
+* Repo: https://github.com/pdp7/teensy-big-oled
+* Commit: f37453f   
+* ISSUE: 
+  * OLED GND not connected to GND plane.
+  *  Temporary fix: solder wire from OLED GND to TEENSY GND
+
 ## License
 This project released under the CERN Open Hardware v1.2 License
 
