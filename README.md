@@ -27,4 +27,4 @@ This project released under the CERN Open Hardware v1.2 License
 * [SSD1306 display code based on example by Paul Stoffregen](https://www.pjrc.com/teensy/td_libs_SSD1306.html)
 
 ## Contact
-* email: Drew Fustini &lt;drew@oshpark.com&gt;
+* Drew Fustini &lt;drew@oshpark.com&gt;
