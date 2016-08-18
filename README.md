@@ -12,12 +12,6 @@ Capactive touch button demo board for Teensy LC with Adafruit 128x64 OLED (SPI)
 * [Monochrome 0.96" 128x64 OLED graphic display](https://www.adafruit.com/product/326)
 * [Teensy LC, OSH Park edition](http://store.oshpark.com/products/teensy-lc)
 
-## GitHub
-* Repo: [teensy-touch](https://github.com/pdp7/teensy-touch)
-* File: [teensy-touch.kicad_pcb](https://github.com/pdp7/teensy-touch/blob/5fb2f44a5e37c01898689bddd4195240e6bf3efe/hardware/teensy-touch.kicad_pcb)
-* Commit: [5fb2f44 *connect GND pin for OLED to GND plane*
-](https://github.com/pdp7/teensy-touch/commit/5fb2f44a5e37c01898689bddd4195240e6bf3efe)
-
 ## Photos
 * [Google+ gallery](https://plus.google.com/photos/+DrewFustini/albums/6318204370050037249)
 * [images directory](https://github.com/pdp7/teensy-touch/tree/master/images)
