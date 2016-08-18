@@ -16,6 +16,8 @@ Capactive touch button demo board for Teensy LC with Adafruit 128x64 OLED (SPI)
 * [Google+ gallery](https://plus.google.com/photos/+DrewFustini/albums/6318204370050037249)
 * [images directory](images)
 
+![Photo of teensy-touch board](https://github.com/pdp7/teensy-touch/blob/master/images/teensy-touch-1.jpg)
+
 ## License
 This project released under the CERN Open Hardware v1.2 License
 
