@@ -1,8 +1,8 @@
 # Teensy LC cap touch demo
 Capactive touch button demo board for Teensy LC with Adafruit 128x64 OLED (SPI)
 
-## Shared Project:
-*[Teensy LC cap touch demo (5fb2f44)](https://oshpark.com/projects/ro7ypcxO)*
+## OSH Park Shared Project:
+**[Teensy LC cap touch demo](https://oshpark.com/projects/ro7ypcxO)**
 * This is what was ordered and tested
 * File: [teensy-touch.kicad_pcb](https://github.com/pdp7/teensy-touch/blob/5fb2f44a5e37c01898689bddd4195240e6bf3efe/hardware/teensy-touch.kicad_pcb)
 * Commit: [5fb2f44 *connect GND pin for OLED to GND plane*
