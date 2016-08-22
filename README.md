@@ -12,6 +12,9 @@ Capactive touch button demo board for Teensy LC with Adafruit 128x64 OLED (SPI)
 * [Monochrome 0.96" 128x64 OLED graphic display](https://www.adafruit.com/product/326)
 * [Teensy LC, OSH Park edition](http://store.oshpark.com/products/teensy-lc)
 
+## Videos
+* [YouTube](https://youtu.be/iRWQk5bGx8w)
+
 ## Photos
 * [Google+ gallery](https://plus.google.com/photos/+DrewFustini/albums/6318204370050037249)
 * [images directory](images)
