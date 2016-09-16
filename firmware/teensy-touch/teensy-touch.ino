@@ -48,7 +48,7 @@
 #define OLED_RESET 13
 Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
-#define THRESHOLD 1800
+#define THRESHOLD 1500
 #define NBUTTON 11
 #define NULL_VALUE -1
 
