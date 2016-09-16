@@ -48,7 +48,7 @@
 #define OLED_RESET 13
 Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
-#define THRESHOLD 2000
+#define THRESHOLD 1800
 #define NBUTTON 11
 #define NULL_VALUE -1
 
@@ -118,12 +118,12 @@ void loop() {
   }
 
   display.clearDisplay();
-  if (disp_sample > -1) {
-    display.setCursor(0, 0);
-    display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  display.setTextColor(WHITE);
+  display.setTextSize(2);
 
-    display.setTextSize(2);
-    display.println("pressed:");
+  if (disp_sample > -1) {
+    display.println("touched:");
 
     display.setTextSize(3);
     display.print("<");
@@ -133,6 +133,8 @@ void loop() {
     display.setTextSize(2);
     display.print("value:");
     display.println(sample[disp_sample]);
+  } else {
+    display.println("Touch any button");
   }
   display.display();
   delay(100);
